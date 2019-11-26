@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>QuikChat</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <h1>This is Quikchat.</h1>
+  <!-- displayname -->
+  <div id="username"></div>
+  <!-- What channel we're in now -->
+  <div id="channel-name"></div>
+
+  <!-- List of channels as clickable buttons -->
+  <ul id="channels">
+    {% for channel in channelList %}
+      <form id="switchChannelForm">
+        <button id="submitSwitchChannel" type="submit" value="{{ channel }}" data-channel="{{ channel }}">
+          <li id="channelOption"># {{ channel }}</li>
+        </button>
+      </form>
+      {% endfor %}
+  </ul>
+  
+  <!-- Form to add channel -->
+  <form id="newChannelForm">
+    <input id="newChannel" type="text" placeholder="New channel name">
+    <button id ="submitNewChannel">Add Channel</button>
+  </form>
+
+    <!-- Where all the messages will display -->
+  <div class="messages">
+    <ul id="messageList">
+    </ul>
+    <form id="messageForm">
+      <input id="newMessage" type="text" placeholder="New message">
+      <button id="submitMessage">Send</button>
+    </form>
+  </div>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
