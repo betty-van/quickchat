@@ -1,5 +1,128 @@
-h1 {
-    text-align: center;
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0 auto;
+    position: fixed;
+    width: 100%;
+    height: 100%; 
+}
+
+.container {
+    margin: 0;
+    height: 90%;
+    display: grid;
+    grid-template-rows: 90% 10%;
+    grid-template-columns: 20% 75%;
+    grid-column-gap: 2%;
+}
+
+.sidebar {
+    margin-left: 2%;
+    background-color: lightblue;
+    border: 1px solid black;
+}
+
+#username, #channel-name {
+    font-size: 1.25em;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+#channels {
+    padding-left: 5px;
+    padding-top: 10px;
+}
+
+#channels button {
+    width: 98%;
+    border: 1px solid rgb(26, 25, 25);
+}
+
+#newChannelForm {
+    margin: 10px auto;
+}
+
+#newChannel {
+    margin-left: 5px;
+    width: 70%;
+    height: 50px;
+    font-size: 18px;
+}
+
+#submitNewChannel {
+    width: 20%;
+    padding: 10px;
+    font-size: 18px;
 }
 
 
+.messages {
+    padding-top: 5px;
+    display: grid;
+    grid-template-rows: 90% 10%;
+    background-color: lightcyan;
+    border: 1px solid black;
+}
+
+#messageList {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin-bottom: 35px;
+}
+
+#messageList::-webkit-scrollbar {
+    width: 10px;
+}
+
+#messageList::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(0,0,0,.1);
+}
+
+#message {
+    padding-left: 10px;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    display: grid;
+    grid-template-columns: 90% 10%;
+}
+
+#deleteThisMessage {
+    padding: 2px;
+    vertical-align: center;
+}
+
+#newMessage {
+    height: 40px;
+    font-size: 22px;
+}
+
+
+h1 {
+    font-size: 2em;
+    margin: 20px 0;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+}
+
+button {
+    background-color: rgb(167, 170, 160);
+    border: none;
+    color: rgb(44, 42, 42);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: rgb(44, 42, 42);
+    color: rgb(167, 170, 160);
+}
+
+input {
+    margin-left: 20px;
+    width: 80%;
+}

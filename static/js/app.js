@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 li.setAttribute("id", "message");
                 li.appendChild(button);
                 ul.appendChild(li);  
+                ul.lastElementChild.scrollIntoView();
             }
             
             return 0;
@@ -196,22 +197,23 @@ document.addEventListener('DOMContentLoaded', function() {
             li.appendChild(document.createTextNode(completeMessage));
             li.setAttribute("id", "message");
             li.appendChild(button);
-            ul.appendChild(li);  
+            ul.appendChild(li);
+            ul.lastElementChild.scrollIntoView(); 
         }
         return 0;
     }
 
     function deleteMessages() {
-        // This is how to access...now to transfer to socket?
-        console.log(this.dataset);
         const data = this.dataset;
-        const li = this.parentElement;
-        const ul = document.querySelector('#messageList');
-        console.log(li);
-        ul.removeChild(li)
-
-        socket.emit('delete Message', data)
+        // Only if it is the user themselves deleting their message
+        if (username === data['user']) {
+            const li = this.parentElement;
+            const ul = document.querySelector('#messageList');
+            ul.removeChild(li);
+            socket.emit('delete message', data)
+        } 
     }
 
     return 0;
 })
+

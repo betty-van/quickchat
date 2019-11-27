@@ -64,6 +64,22 @@ def handleMessage(messageData):
     # To tell everyone a message was received
     emit('message received', messageData, broadcast=True)
 
+@socketio.on('delete message')
+def deleteMessage(data):
+    user = data['user']
+    channel = data['channel']
+    timestamp = data['timestamp']
+    # If timestamp and user match, then delete
+    for message in channelList[channel]:
+        if message['user'] == user and message['timestamp'] == timestamp:
+            print(f"Deleted {message}")
+            channelList[channel].remove(message)
+            break
+    print(channelList[channel])
+    emit('deleted message, data, broadcast=True')
+        
+
+
 
 # Joining a room
 @socketio.on("join")
