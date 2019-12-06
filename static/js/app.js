@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = JSON.parse(request.responseText);
 
             if (data.success) {
-                console.log(data);
+                // console.log(data);
                 displayMessages(data);
                 return 0;
             }
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let user = messages[i]['user'];
             let channel = messages[i]['current_channel'];
             let completeMessage = (`${user} ${timestamp}: ${myMessage}` )
-            console.log(completeMessage + ' ' + channel);
+            // console.log(completeMessage + ' ' + channel);
 
             // Add a button to delete messages
             const button = document.createElement('button');
