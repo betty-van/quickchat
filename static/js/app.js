@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 timestamp = timestamp.toLocaleString('en-US');
                 let user = username;
                 let channel = currentChannel;
-                console.log ('sent: ' + myMessage + ' at ' + timestamp + ' by ' + user + ' on ' + channel + ' channel.');
+                // console.log ('sent: ' + myMessage + ' at ' + timestamp + ' by ' + user + ' on ' + channel + ' channel.');
                 let messageData = {'myMessage': myMessage, 'timestamp': timestamp, 'user': user, 'current_channel': channel};
                 socket.emit('send message', messageData);
                 document.getElementById('newMessage').value = '';
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let user = messageData['user'];
                 let channel = messageData['current_channel'];
                 let completeMessage = (`${user} ${timestamp}: ${myMessage}`)
-                console.log('received on ' + channel + ': ' + completeMessage);
+                // console.log('received on ' + channel + ': ' + completeMessage);
 
                 // Add button to delete message
                 const button = document.createElement('button');
@@ -75,14 +75,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // When new channel form is completed, emit a new channel event
         document.querySelector('#newChannelForm').onsubmit = () => {
             const newChannel = document.querySelector('#newChannel').value;
-            console.log(newChannel);
+            // console.log(newChannel);
             socket.emit('submit new channel', {newChannel});
             return newChannel;
         }
 
         // When hear new channel, add it to the channels list without refresh!
         socket.on('new channel', (newChannel) => {
-            console.log(newChannel);
+            // console.log(newChannel);
             const channelName = newChannel["newChannel"];
             // To show up without refresh from other users
 
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             button.appendChild(li);
             form.appendChild(button);
-            console.log(form);
+            // console.log(form);
             document.querySelector('#channels').append(form);
             document.querySelector('#newChannel').value = '';
             document.querySelector('#submitNewChannel').disabled = true;
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function switchChannel() {
         // Assign this function to button.onclick in the channel form
-        console.log(this.value);
+        // console.log(this.value);
 
         // Leaving a room means seeing if the button they clicked is equivalent to where they are or not
         var roomToLeave = localStorage.getItem("currentChannel");
